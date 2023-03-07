@@ -12,6 +12,6 @@ jobs:
     steps:
       - uses: ImYrS/aliyun-auto-signin@main
         with:
-          REFRESH_TOKENS: ${{ secrets.5d809897b2724d15a434630e7bb9b9fc }}
+          REFRESH_TOKENS: ${{ secrets.REFRESH_TOKENS }}
           PUSH_TYPES: 'ServerChan'
-          SERVERCHAN_SEND_KEY: ${{ secrets.SCT188316TPAmttHh0sKfvIdMcdrsBGriq }}
+          SERVERCHAN_SEND_KEY: ${{ secrets.SERVERCHAN_SEND_KEY }}
