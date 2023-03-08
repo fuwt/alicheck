@@ -1,0 +1,24 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is testing github api
+on: [push]
+jobs:
+  update-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Dependencies
+        shell: bash
+        run: pip install configobj requests pynacl
+      - name: run
+        shell: bash
+        env:
+          GITHUB_REPOS: ${{github.repository}}
+          GITHUB_OWNER: ${{github.actor}}
+          PK_TOKEN: ${{secrets.PK_TOKEN}}
+          TEST: ${{secrets.TEST}}
+        run: |
+          python main.py
+
