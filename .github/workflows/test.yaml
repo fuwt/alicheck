@@ -1,24 +1,18 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is testing github api
-on: [push]
+name: Aliyun Signin TEST
+
+on:
+  schedule:
+   # 每天国际时间 17:20 运行一次, 中国时间 01:20
+    - cron: '20 17 * * *'
+  workflow_dispatch:
 jobs:
-  update-secret:
+  signin:
+    name: Aliyun Signin
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: ImYrS/aliyun-auto-signin@main
         with:
-          python-version: '3.10'
-      - name: Dependencies
-        shell: bash
-        run: pip install configobj requests pynacl
-      - name: run
-        shell: bash
-        env:
-          GITHUB_REPOS: ${{github.repository}}
-          GITHUB_OWNER: ${{github.actor}}
-          PK_TOKEN: ${{secrets.PK_TOKEN}}
-          TEST: ${{secrets.TEST}}
-        run: |
-          python main.py
-
+          REFRESH_TOKENS: ${{ secrets.REFRESH_TOKENS }}
+          PUSH_TYPES: 'serverchan'
+          SERVERCHAN_SEND_KEY: ${{ secrets.SERVERCHAN_SEND_KEY }}
+          GITHUB_P_TOKEN: ${{GITHUB_P_TOKEN}}
