@@ -15,7 +15,7 @@ jobs:
           REFRESH_TOKENS: ${{ secrets.REFRESH_TOKENS }}
           PUSH_TYPES: 'serverchan'
           SERVERCHAN_SEND_KEY: ${{ secrets.SERVERCHAN_SEND_KEY }}
-          GITHUB_P_TOKEN: ${{GITHUB_P_TOKEN}}
+          GP_TOKEN: ${{GP_TOKEN}}
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
