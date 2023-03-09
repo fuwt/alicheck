@@ -1,3 +1,5 @@
+from os import environ
+
 def main():
     TEST = environ['REFRESH_TOKENS']
     for i in TEST:
